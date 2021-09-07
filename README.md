@@ -1,8 +1,10 @@
+---
 # PyTorch Basic Experiments
 
 ### 1: PyTorch Basic operations
 
 pytorch框架与autograd入门，简单前向神经网络
+
 #### 套路
 1. 定义输入输出
 2. 定义模型
@@ -10,7 +12,6 @@ pytorch框架与autograd入门，简单前向神经网络
 4. 定义optimizer
 5. 定义训练过程：获得模型预测，做loss，清理梯度，反向传播，更新参数
 
----
 
 ### 2: Simple Word Embedding Experiment
 
@@ -53,7 +54,7 @@ Perplexity
 - 即概率本身的-1/N次方$PP(W)=P(W)^{-1/N}$，N可以起到一个normalization factor的功能，把句子长度的影响给取消
 - PP越高，模型越不好
 
-##### 循环神经网络
+#### 循环神经网络
 
 循环神经网络相比普通的神经网络，能更好照顾序列信息（因为把前一时刻的隐层权重用在此时的预测）
 
@@ -76,7 +77,9 @@ Perplexity
 
 （图片来自维基百科）
 
-#### 文本分类
+----
+
+### 4: Text Classification Experiment
 
 #### word averaging
 
@@ -84,9 +87,11 @@ Perplexity
 
 简单但高效
 
----
+#### RNN
 
+用RNN模型encode这个句子，把传到最后的隐状态作为encode
 
-```python
+#### CNN
 
-```
+![avatar](./pictures/pic_CNN.jpeg)
+
