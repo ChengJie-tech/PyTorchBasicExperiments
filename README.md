@@ -95,3 +95,45 @@ Perplexity
 
 ![avatar](./pictures/pic_CNN.jpeg)
 
+----
+
+### 5: CNN and Finetuning Experiment
+
+#### CNN
+
+用卷积神经网络进行局部特征提取
+
+相较于全连接层的平移不变性：比如图片的不同位置，在fc层是由不同参数做inference的，而卷积的filter是平移来做，是全局共享的，因此对位置不敏感，处理图像更方便（但是卷积无法处理旋转，因为filter常常是正方的
+
+大致结构：INPUT → [[CONV → RELU] * N → POOL ] * M → [FC → RELU] * K → FC
+
+Batch normalization: 拿到一个batch数据，求均值和标准差，对每个样本标准化，使之以0为中心，以1为标准差
+
+LeNet, AlexNet跟上述大体结构差不多
+
+deeper：VGG-16
+
+##### ResNet
+
+basic block中有residual过程，即在最后做addition（与输入相加）
+
+更深情况：bottleneck，basicblock中2*conv→3*conv，此外addition时有一个downsample
+
+##### DenseNet
+
+能达到更深
+
+考虑denseblock：随层数变深，conv2的size有一个growth_rate因子让它更大，然后把得到的new_feature和之前的feature拼在一起
+
+##### Transfer Learning
+
+使用预训练模型来加速训练过程，预训练模型的靠前的层是非常好的feature extractor！
+
+两种方法：
+
+- fine tuning：改变一些模型架构，比如把最后fc层的一千类改成二分类，然后继续训练整个模型上的参数
+- feature extraction：不改变预训练模型结构的参数，只更新我们自己加的部分模型参数
+
+press: MNIST数据集基础上有个fashion_mnist！也是十分类问题，内容是各种黑白的衣着服饰。
+
+----
